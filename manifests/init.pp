@@ -8,7 +8,7 @@ class airserver (
 ) {
 
   package { "AirServer ${version}":
-    provider => 'appdmg',
+    provider => 'appdmg_eula',
     source   => "http://dl.airserver.com/mac/AirServer-${version}.dmg"
   }
 }
