@@ -1,0 +1,19 @@
+box: wercker/rvm
+build:
+    steps:
+        - script:
+            name: set environment variables
+            code: export GITHUB_API_TOKEN=d2c7c15db12c627fea9b717245c5302eec8de702
+        - rvm-use:
+            version: ruby-1.9.3-p545
+        - script:
+            name: move code folder and update WERCKER_SOURCE_DIR
+            code: |
+                mv $WERCKER_SOURCE_DIR $WERCKER_OUTPUT_DIR/$WERCKER_GIT_REPOSITORY
+                cd $WERCKER_OUTPUT_DIR/$WERCKER_GIT_REPOSITORY
+                # update the source dir env var to the new location
+                export WERCKER_SOURCE_DIR=$WERCKER_OUTPUT_DIR/$WERCKER_GIT_REPOSITORY
+        - script:
+            name: run cibuild script
+            code: |
+                script/cibuild
