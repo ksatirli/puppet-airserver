@@ -1,12 +1,10 @@
 require 'spec_helper'
 
-$version = '5.0.4.0'
-
 describe 'airserver' do
   it do
     should contain_package('AirServer').with({
       :provider => 'appdmg_eula',
-      :source   => 'http://dl.airserver.com/mac/AirServer-${version}.dmg'
+      :source   => 'http://dl.airserver.com/mac/AirServer-5.0.4.0.dmg'
     })
   end
 end
